@@ -10,6 +10,10 @@
       Type: List<AWS::EC2::Subnet::Id>
       Default: subnet-0a8882b9093bd5260 , subnet-089eff453dddd566a  # Replace with actual subnet IDs
       Description: List of public subnet IDs to put the load balancer and tasks in
+    Imagename:
+      Type: String
+      Description: Name of the ECR repository
+      Default: 477713232171.dkr.ecr.us-east-1.amazonaws.com/qa-container:latest
   
   Resources:
     LogGroup:
@@ -126,7 +130,7 @@
           - FARGATE
         ContainerDefinitions:
           - Name: "ecs-front-container"
-            Image: "477713232171.dkr.ecr.us-east-1.amazonaws.com/qa-container:latest"
+            Image: !Ref Imagename
             PortMappings:
               - ContainerPort: 80
             LogConfiguration:
