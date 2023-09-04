@@ -34,12 +34,6 @@ def question_answering():
     question = request.json.get('question')
     logger.info(f'Question sent In :: {question}')
 
-    # Your existing code to perform question answering
-    #Now we need Langchain to first perform embedding of the question, find the answers, combine teh answers and then send to the LLM
-    #https://github.com/aws/amazon-sagemaker-examples/blob/main/introduction_to_amazon_algorithms/jumpstart-foundation-models/question_answering_retrieval_augmented_generation/question_answering_langchain_jumpstart.ipynb
-    # Step 4. Use RAG based approach with LangChain and SageMaker endpoints to build a simplified question and answering application.
-
-    
     TEXT_EMBEDDING_MODEL_ENDPOINT_NAME = 'jumpstart-dft-hf-textembedding-gpt-j-6b-fp16'
     # T5FLAN_XL_ENDPOINT_NAME = "jumpstart-example-huggingface-text2text-2023-08-05-07-33-26-290"
     T5FLAN_XXL_ENDPOINT_NAME = "jumpstart-example-huggingface-text2text-2023-08-06-16-40-45-080" 
@@ -90,19 +84,6 @@ def question_answering():
     URL = f'{domain_endpoint}/{domain_index}/_search'
     logger.info(f'URL for OpenSearch index = {URL}')
     
-    # question = 'What is the way to perform Cleaning and Disinfection during virus Outbreak?'
-    # question ="Why should I select a  proper disinfectant ?"
-    # question ="What is a PPE ?"
-    # question = "What precautions should be taken for Cleaning and Disinfection of Equipment and Supplies?"
-    # question = "What preventive measures should I take for Foot and Mouth disease?"
-    
-    
-    #Next set of questions for washing machin mnaual
-    # question = 'How should I clean the windshield?'
-    # question = 'How should I check the tire inflation pressure?'
-    # question = 'Where can I find the vehicle identification number?'
-    # question = 'How can I report safety defects?'
-    # question = 'What is a safety defect?'
     
     #get embedding from huggingface
     payload = {'text_inputs': [question]}
@@ -176,41 +157,6 @@ def question_answering():
         
     print("Response")
     print(response)
-    
-    
-    
-    #### 2nd template
-    # class Document:
-    #     def __init__(self, page_content, metadata=None):
-    #         self.page_content = page_content
-    #         self.metadata = metadata or {}
-    
-    
-    # # Create a list of Document objects from the passages_list
-    # docs = [Document(page_content=docs_page_content)]
-    # print("Combined context")
-    # print(docs[0].page_content)
-    # prompt_template = """
-    # Please answer the following question using the context provided. Be verbose and detailed
-    
-    # CONTEXT: 
-    # {context}
-    # =========
-    # QUESTION: {question} 
-    # ANSWER: """
-    
-    # PROMPT = PromptTemplate(template=prompt_template, input_variables=["context", "question"])
-    # chain = load_qa_chain(
-    #     llm=SagemakerEndpoint(
-    #                 endpoint_name=T5FLAN_XXL_ENDPOINT_NAME,
-    #                 region_name="us-east-1",
-    #                 model_kwargs=parameters,
-    #                 content_handler=llm_content_handler), 
-    #     prompt=PROMPT)
-    
-    # result = chain({"input_documents": docs, "question": question}, return_only_outputs=True)
-    # print(result)
-
     return jsonify({"response": response})
     
     
