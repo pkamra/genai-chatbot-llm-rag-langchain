@@ -9,15 +9,15 @@ Parameters:
   VpcId:
     Type: String
     Description: ID of the VPC
-    Default: vpc-0c68c710dbebde5fc  # Replace with actual VPC ID
+    Default: vpc-123456  # Replace with actual VPC ID
   SubnetId:
     Type: String
     Description: ID of the subnet
-    Default: subnet-0a8882b9093bd5260 , subnet-089eff453dddd566a  # Replace with actual subnet IDs
+    Default: subnet-123456 , subnet-123456  # Replace with actual subnet IDs
   Imagename:
     Type: String
     Description: Name of the ECR repository
-    Default: 477713232171.dkr.ecr.us-east-1.amazonaws.com/save-embedding-vectordb:latest
+    Default: 123456.dkr.ecr.us-east-1.amazonaws.com/save-embedding-vectordb:latest
 
 Resources:
   MyLogGroup:

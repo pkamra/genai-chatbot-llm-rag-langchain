@@ -4,16 +4,16 @@
   Parameters:
     DemoVPC:
       Type: String
-      Default: vpc-0c68c710dbebde5fc  # Replace with actual VPC ID
+      Default: vpc-123456  # Replace with actual VPC ID
       Description: The VPC that the service is running inside of
     PublicSubnetIds:
       Type: List<AWS::EC2::Subnet::Id>
-      Default: subnet-0a8882b9093bd5260 , subnet-089eff453dddd566a  # Replace with actual subnet IDs
+      Default: subnet-123456 , subnet-123456  # Replace with actual subnet IDs
       Description: List of public subnet IDs to put the load balancer and tasks in
     Imagename:
       Type: String
       Description: Name of the ECR repository
-      Default: 477713232171.dkr.ecr.us-east-1.amazonaws.com/qa-container:latest
+      Default: 123456.dkr.ecr.us-east-1.amazonaws.com/qa-container:latest
   
   Resources:
     LogGroup:
