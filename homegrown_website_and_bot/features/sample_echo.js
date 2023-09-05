@@ -4,6 +4,10 @@
  */
 var request = require('request');
 const axios = require('axios');
+
+// Access the environment variable
+const QUEST_URL = process.env.QUEST_URL;
+
 module.exports = function(controller) {
 
     // controller.hears('sample','message,direct_message', async(bot, message) => {
@@ -17,7 +21,7 @@ module.exports = function(controller) {
       });
       console.log(data);
       const response = await axios({
-        url: 'http://qa-ll-Publi-2ZYT2FVYSIA3-578764554.us-east-1.elb.amazonaws.com/qa',
+        url: QUEST_URL,
         method: 'POST',
         headers: {
           'Accept': 'application/json',
