@@ -5,7 +5,7 @@ Parameters:
   BucketName:
     Type: String
     Description: Name of the S3 bucket
-    Default: car-manuals-12826 # Replace with actual VPC ID
+    Default: car-manuals-12345 # Replace with actual VPC ID
   VpcId:
     Type: String
     Description: ID of the VPC
